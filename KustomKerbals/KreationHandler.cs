@@ -11,12 +11,8 @@
 //FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
 //DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using UnityEngine;
-using KustomKerbals;
 using KSP.UI.Screens;
 
 namespace KustomKerbals
@@ -25,7 +21,6 @@ namespace KustomKerbals
 	[KSPAddon(KSPAddon.Startup.SpaceCentre, false)]
 	public class KK : MonoBehaviour
 	{
-
         #region defs
 
         //Bools
@@ -91,8 +86,7 @@ namespace KustomKerbals
         #endregion
 
         public void Start()
-		{
-			
+		{			
 			Debug.Log("Kustom Kerbals loaded.");
 
 			//Move the window to the center of the screen
@@ -117,16 +111,13 @@ namespace KustomKerbals
 					() => {},
 					() => {},
 					() => {},
-					ApplicationLauncher.AppScenes.SPACECENTER,
-					(Texture)GameDatabase.Instance.GetTexture("KustomKerbals/textures/toolbar", false));
+					ApplicationLauncher.AppScenes.SPACECENTER, GameDatabase.Instance.GetTexture("KustomKerbals/textures/toolbar", false));
 			}
-
 		}
 
-		void toggleGUI(bool state) {
-
+		void toggleGUI(bool state)
+		{
 			windowState = state;
-
 		}
 
 		//Tells the window to open, gets whether the Kerbal is male or female, handles figuring out whether a Kerbal with that name exists, etc.
@@ -153,28 +144,26 @@ namespace KustomKerbals
 
 			}
 
-			if (traitInt == 0) {
-
+			if (traitInt == 0)
+			{
 				Trait = "Pilot";
-
-			} else if (traitInt == 1) {
-
+			}
+			else if (traitInt == 1)
+			{
 				Trait = "Engineer";
-
-			} else if (traitInt == 2) {
-
+			}
+			else if (traitInt == 2)
+			{
 				Trait = "Scientist";
-
 			}
 
-			if (editMale) {
-
+			if (editMale)
+			{
 				editGender = "Male";
-
-			} else {
-
+			}
+			else
+			{
 				editGender = "Female";
-
 			}
 
 			if (editTraitInt == 0) {
@@ -191,7 +180,7 @@ namespace KustomKerbals
 
 			}
 
-			if ((GameSettings.MODIFIER_KEY.GetKey()) && Input.GetKeyDown(KeyCode.K))
+			if (GameSettings.MODIFIER_KEY.GetKey() && Input.GetKeyDown(KeyCode.K))
 			{
 				windowState = !windowState;
 
